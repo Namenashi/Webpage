@@ -17,7 +17,7 @@
   --font-body:    'Noto Sans KR', sans-serif;
 
   --nav-h:    56px;
-  --left-w:   220px;
+  --left-w:   56px;
   --right-w:  60px;
   --desc-w:   380px;
   --transition: 0.45s cubic-bezier(0.77, 0, 0.175, 1);
@@ -54,7 +54,8 @@ nav {
   width: var(--left-w);
   display: flex;
   align-items: center;
-  padding: 0 20px;
+  justify-content: center;
+  padding: 0;
   border-right: 1px solid var(--border);
   flex-shrink: 0;
   cursor: pointer;

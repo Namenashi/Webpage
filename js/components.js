@@ -92,7 +92,6 @@ function renderFooter() {
   mount.innerHTML = `
     <footer>
       <div class="footer-logo">
-        ${iconSvg(COLOR_FOOTER_ICON, '100px', '100px')}
         ${titleSvg(COLOR_FOOTER_TITLE, '140px')}
       </div>
       <div class="footer-tagline">Portfolio — Projects &amp; Works</div>

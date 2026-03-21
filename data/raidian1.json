@@ -115,10 +115,7 @@
     {
       "label": "POST MORTEM",
       "slides": [
-        {
-          "caption": "No Image",
-          "src": null
-        }
+        { "caption": "01_04-A",  "src": "Photo/Raidian_I/Main.png", "bg": null }
       ],
       "expand": {
         "title": "LESSONS\nLEARNED",
