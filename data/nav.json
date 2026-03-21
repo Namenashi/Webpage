@@ -6,12 +6,17 @@
   },
   {
     "id": "about",
-    "label": "Lebenslauf",
+    "label": "Curriculum Vitae",
     "href": "post.html#about"
   },
   { 
     "id": "raidian1",
     "label": "Raidian I",
     "href": "project.html#raidian1"
+  },
+  { 
+    "id": "raidian2",
+    "label": "Raidian II",
+    "href": "project.html#raidian2"
   }
 ]

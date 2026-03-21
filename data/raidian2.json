@@ -1,0 +1,70 @@
+{
+  "title": "RAIDIAN II",
+  "progress": 20,
+  "status": "Working",
+  "theme": "Robotics / Embedded",
+  "category": "Hardware/Software Development",
+  "year": "2025 - Now",
+  "index": "02",
+  "description": {
+    "title": "RAIDIAN II\nDEVELOPMENT LOG",
+    "tags": ["Autonomous navigation", "Camera-based object detection", "Simple SLAM (Simultaneous Localization and Mapping)", "Autonomous cargo robot"],
+    "text": "Raidian II aims to be an open-source, locally operated robot capable of functioning as a partner in the user's daily life. The robot will perceive and map its surroundings through a camera, and based on that map, it will derive a safe route toward the user's relative coordinates — estimated via beacon signals — to autonomously track and follow the user. The goal is for the robot to operate without issues across all terrain types a user might encounter in daily life: indoors, outdoors, forest paths, snow, and ice. A target of 3+ hours of continuous outdoor operation is set. <br> The robot will be driven by two BLDC motors and will use multiple ESP32s and a Raspberry Pi 5 for control. The robot's position will be estimated by combining wheel encoder readings with IMU correction. The main frame, directly connected to both tracks, will use 7075-T6 aluminium, with AlMgSi0.5 used for all other structural components.",
+    "specs": [
+      { "key": "Controller", "val": "ESP32, Raspberry Pi 5" },
+      { "key": "Sensor",     "val": "MPU6050 (I2C)" },
+      { "key": "Motor",      "val": "BLDC-Getriebemotor 48V, 250W, 200RPM 8.66Nm, 15:1 Gear Ratio" },
+      { "key": "Driver",     "val": "Digital BLDC-Motortreiber 24-48VDC, Max 15.0A, 400W"},
+      { "key": "Gear Ratio", "val": "1:3 Reduction" },
+      { "key": "Battery",    "val": "LiFePO4 48V 50Ah" },
+      { "key": "Frame",      "val": "Aluminium 7075-T6" },
+      { "key": "Tires",      "val": "Solid Rubber" },
+      { "key": "Est. Weight","val": "~100 kg" },
+      { "key": "Target Speed","val": "3 km/h" }
+    ],
+    "notes": "In the long term, this robot is intended to gain voice-based control and communication through integration with a local LLM, as well as physical object interaction via a robotic arm. The ultimate goal is to develop this robot into a practical partner for everyday life. However, given the development complexity, lengthy timelines, and costs involved in implementing these features, they are intentionally deferred to a later stage."
+  },
+  "sections": [
+    {
+      "label": "Basic Design",
+      "slides": [
+        { "caption": "01_01-A", "src": "Photo/Raidian_II_Render/Screenshot 2025-11-08 223601.png", "bg": null },
+        { "caption": "01_01-B", "src": "Photo/Raidian_II_Render/Screenshot 2025-11-08 223538.png", "bg": null },
+        { "caption": "01_01-C", "src": "Photo/Raidian_II_Render/Screenshot 2025-11-09 000859.png", "bg": null },
+        { "caption": "01_01-D", "src": "Photo/Raidian_II_Render/Screenshot 2025-11-08 182818.png", "bg": null },
+        { "caption": "01_01-E", "src": "Photo/Raidian_II_Render/Screenshot 2025-11-08 182808.png", "bg": null },
+        { "caption": "01_01-F", "src": "Photo/Raidian_II_Render/Screenshot 2025-11-08 182735.png", "bg": null },
+        { "caption": "01_01-G", "src": "Photo/Raidian_II_Render/Screenshot 2025-11-08 182720.png", "bg": null }
+      ],
+      "expand": {
+        "title": "Goals",
+        "tags": [],
+        "text": "Basic Design Goals: <br> 1. Must be able to travel at full speed through light off-road terrain (forest paths, approx. 20% inclines, traversable obstacles) without difficulty. <br> 2. Must be able to navigate the above terrain while carrying a total load of approximately 100 kg including the robot's own weight. <br> 3. Must support at least 1 hour of continuous activity; cooling breaks are acceptable, but a minimum of 3 hours of operation per single charge is required. <br> Rubber tracks will be used to obtain sufficient traction on rough terrain, which means significant energy loss should be anticipated.",
+        "notes": "The tracks were purchased as off-the-shelf parts intended for snowmobile-type go-karts, but there was a significant discrepancy between the dimensions listed on the product page and the actual dimensions of the received item. As a result, the CAD model showed no clearance issues, but in reality a large gap was present. Going forward, it will be important to select suppliers that provide accurate and verified specifications."
+      }
+    },
+    {
+      "label": "Hardware Configuration",
+      "slides": [
+        { "caption": "01_02-A", "src": "Photo/Raidian_II/20260118_002315.jpg", "bg": null },
+        { "caption": "01_02-B", "src": "Photo/Raidian_II/20260118_183351.jpg", "bg": null },
+        { "caption": "01_02-C", "src": "Photo/Raidian_II/20260118_201809.jpg", "bg": null },
+        { "caption": "01_02-D", "src": "Photo/Raidian_II/20260114_015410.jpg", "bg": null },
+        { "caption": "01_02-E", "src": "Photo/Raidian_II/20260118_233856.jpg", "bg": null },
+        { "caption": "01_02-F", "src": "Photo/Raidian_II/20260118_233946.jpg", "bg": null },
+        { "caption": "01_02-G", "src": "Photo/Raidian_II/20260201_094401.jpg", "bg": null },
+        { "caption": "01_02-H", "src": "Photo/Raidian_II/20260211_211848.jpg", "bg": null },
+        { "caption": "01_02-I", "src": "Photo/Raidian_II/20260216_185153.jpg", "bg": null },
+        { "caption": "01_02-J", "src": "Photo/Raidian_II/IMG_20260301_013215598.jpg", "bg": null },
+        { "caption": "01_02-K", "src": "Photo/Raidian_II/IMG_20260301_013207743.jpg", "bg": null },
+        { "caption": "01_02-K", "src": "Photo/Raidian_II/PXL_20260310_155858166.jpg", "bg": null }
+      ],
+      "expand": {
+        "title": "Hardware Configuration",
+        "tags": [],
+        "text": "Motor & Drive Design: <br> - Motors must operate at a minimum of 200W on 48V input. An internal gear ratio of at least 1:15 is considered necessary. Planning to mount one motor on each side, each with a final output speed of 200 RPM. <br> - The motor shaft is 20mm with a keyway, and a matching sprocket with the appropriate bore and keyway is available. Since the go-kart sprocket compatible with the current axle is 37T, using a 17T sprocket on the motor side would achieve the additional gear reduction needed for reliable off-road travel. A 17T sprocket with 15mm inner diameter will be used. Both the sprockets and chain will be industrial-grade. <br> - Under this configuration, the expected travel speed is approximately 3 km/h. <br> <br> Battery: <br> - A LiFePO4 48V 50Ah battery will be used. <br> Specs: <br> - Rated Voltage: 51.2V (48V compatible) <br> - Capacity: 50Ah <br> - Continuous Discharge Current: 50A <br> - Peak Discharge: 100–150A <br> Estimated Runtime: <br> - Combined motor power draw: 500W <br> - Energy required for 3 hours continuous operation: 1,500Wh <br> - Theoretical battery capacity: 51.2V × 50Ah = 2,560Wh → theoretically ~5.12 hours of operation <br> - Even accounting for voltage sag, approximately 3 hours of operation is expected <br> - Average current: 500W ÷ 48V ≈ 10.4A → well below the 50A continuous discharge rating; suitable <br> - Inrush current (worst case, 10× multiplier applied): ~52.1A per motor, ~100A combined → within peak discharge range; suitable <br> - It is recommended to use a soft starter or configure a slow-start setting in the controller if possible. <br> <br> Overall Control Architecture: <br> - Drivers and sensors will be controlled by ESP32s. The ESP32s will communicate with the Raspberry Pi 5 via USB. Main algorithms and server communication will be handled by the Raspberry Pi 5. Upgrades to other hardware are possible later, but since development is in Python and communication with the ESP32s goes through USB, this is not a critical concern for now. <br> <br> BLDC Driver BLD-515C Control: <br> - The BLD-515C driver accepts a speed control voltage via the SV pin for speed adjustment. Since the ESP32 outputs 3.3V analog signals, an amplification circuit such as an op-amp or an external DAC is required. In this case, since only direction and speed need to be controlled, a DAC is sufficient. The chosen DAC must cover 0–5V output and can be placed far enough from the motor to make noise negligible. <br> - Since a single ESP32 must control both motors simultaneously, two DAC chips need to be configured with different I2C addresses to allow simultaneous control over a single I2C bus. Requirements: 3.3V operating voltage, support for both 0V and 5V output. Selected chip: Adafruit MCP4725 Breakout Board 12-Bit DAC. <br> - Rotation direction is controlled via the F/R pin. This is a simple toggle pin; since it typically recognizes anything above 2V as ON, the 3.3V GPIO signal from the ESP32 is sufficient. However, if a particular driver cannot be toggled by 3.3V, an additional low-side sink circuit may be required. <br> - Applying full throttle from the start can cause issues such as inrush current spikes. When controlling via ESP32, a soft-start logic should be implemented to ramp the input from 0V to 5V over approximately 2–3 seconds. <br> <br> Principle of Isolating Driver Power from Control Power: <br> - When using a driver that has separate inputs for driver power and control power, the grounds of these two systems must NOT be connected together. Connecting them allows noise generated by the high-voltage/high-current driver side to flow into the microprocessor, potentially damaging both the driver and the processor, and corrupting control signals. (This is believed to be the cause of the control issues experienced with Unit 1.) <br> - High-voltage/high-current drivers of this type use internal photocouplers to transmit control signals, with the high-power driver input and the control input physically isolated from each other. Bridging the grounds of these two inputs defeats the isolation, causing noise issues. <br> - When microprocessors or their peripheral components communicate via wired pin connections, their grounds must be tied together. <br> <br> Using Isolated DC-DC Step-Down Converters: <br> - In a configuration where multiple components require different input voltages and there is a single battery as the energy source, isolated DC-DC step-down converters will be used. Each converter should be treated as a conceptual new 'battery' when designing the circuit. <br> - Components on either side of the isolation barrier should be grouped and their grounds tied within each side, not across the barrier. <br> - Grounds must be connected in a star topology, not daisy-chained. Since this is not a PCB, terminal blocks or bus bars will be used. The battery negative terminal serves as the reference GND.",
+        "notes": "Current Status: <br> - The lower frame and upper frame are both complete. The basic environment for testing the two main motors is now ready. The fabrication required more manual effort than expected and came with various complications, but this stage is complete. <br> - After physical assembly, the track friction turned out to be stronger than anticipated, making it likely that testing and operation indoors would damage the floor surface. As a temporary fix, felt material was cut and attached to the outer surface of the tracks. <br> <br> Next Steps: <br> 1. Complete the remaining control-related circuits. <br> 2. Begin motor testing and write the basic code required for fundamental operation, including drive testing. <br> 3. Set up and connect the Raspberry Pi 5; begin implementing the environmental perception algorithm. <br> 4. Purchase and install the additional sensors required for the above features (encoders, IMU, beacons, etc.)."
+      }
+    }
+  ]
+}

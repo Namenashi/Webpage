@@ -1,83 +1,84 @@
 {
   "tag": "// Profile",
-  "name": "Lebenslauf",
-  "desc": "Curriculum Vitae, 21.03.2026",
+  "name": "Curriculum Vitae",
+  "desc": "21.03.2026",
   "sections": [
     {
       "type": "timeline",
-      "label": "AUSBILDUNG",
+      "label": "EDUCATION",
       "items": [
         {
           "period": "2013 — 2019",
           "role": "Gesamtschule Gießen Ost",
-          "org": "Gesamtschule",
-          "desc": "2016 - Mittlere Reife (Realschulabschluss) <br> 2019 - Allgemeine Hochschulreife (Abitur)",
+          "org": "Secondary School",
+          "desc": "2016 - Intermediate School Certificate (Secondary School Diploma) <br> 2019 - General University Entrance Qualification (Abitur)",
           "tags": []
         },
         {
           "period": "2019 — 2020",
           "role": "Technische Universität Darmstadt",
-          "org": "Technische Universität",
-          "desc": "- Maschinenbau (B.Sc.)",
+          "org": "Technical University",
+          "desc": "- Mechanical Engineering (B.Sc.)",
           "tags": []
         },
         {
-          "period": "2020 — Jetzt",
+          "period": "2020 — Present",
           "role": "Technische Universität Darmstadt",
-          "org": "Technische Universität",
-          "desc": "- Informatik (B.Sc.) (Fachwechsel) <br> - Unterbrechung durch Militärdienst",
+          "org": "Technical University",
+          "desc": "- Computer Science (B.Sc.) (Change of Major) <br> - Interrupted by military service",
           "tags": []
         }
       ]
-    },{
+    },
+    {
       "type": "timeline",
-      "label": "MILITÄRDIENST",
+      "label": "MILITARY SERVICE",
       "items": [
         {
           "period": "2021 — 2023",
-          "role": "Republik Korea – Militärdienst",
-          "org": "MILITÄRDIENST",
-          "desc": "- Bedienung und Verwaltung optoelektronischer Überwachungssysteme (TOD) <br> - inkl. COVID-19-bedingter Verzögerungen",
+          "role": "Republic of Korea – Military Service",
+          "org": "MILITARY SERVICE",
+          "desc": "- Operation and management of optoelectronic surveillance systems (TOD) <br> - incl. COVID-19-related delays",
           "tags": []
         }
       ]
     },
     {
       "type": "posts",
-      "label": "PROJEKTE",
+      "label": "PROJECTS",
       "items": [
         {
           "date": "2023 – 2025",
           "title": "Raidian I",
-          "excerpt": "- Entwicklung eines selbstbalancierenden Zweiradroboters <br> - Gleichgewichtsregelung via MPU6050-Sensor und PID-Steuerung <br> - Steuerung: Raspberry Pi 5 + ESP32 (MicroPython) <br> - Eigenständige Konstruktion und Fertigung ab Rohmaterial <br> - Projekt abgeschlossen. Gewonnene Erkenntnisse fließen in Raidian II ein",
+          "excerpt": "- Development of a self-balancing two-wheeled robot <br> - Balance control via MPU6050 sensor and PID controller <br> - Control: Raspberry Pi 5 + ESP32 (MicroPython) <br> - Independent design and manufacturing from raw materials <br> - Project completed. Insights gained feed into Raidian II",
           "tags": [],
           "href": "https://github.com/Namenashi/Raidian_I"
         },
         {
           "date": "2024",
           "title": "Veritas Encryptor (Python, Open Source)",
-          "excerpt": "- Datei-Verschlüsselungssoftware mit sequenziellem <br> Dual-Verschlüsselungsverfahren (ChaCha20-Poly1305 + AES-GCM) <br> - Schlüsselableitung via Argon2id + HKDF <br> - Plattformübergreifend (Windows / Linux)",
+          "excerpt": "- File encryption software with sequential <br> dual-encryption method (ChaCha20-Poly1305 + AES-GCM) <br> - Key derivation via Argon2id + HKDF <br> - Cross-platform (Windows / Linux)",
           "tags": [],
           "href": "https://github.com/Namenashi/File_Encryptor"
         },
         {
-          "date": "2025 – laufend",
+          "date": "2025 – ongoing",
           "title": "Raidian II",
-          "excerpt": "- Autonomer Lastentransportroboter <br> - Kettenantrieb mit Industriemotoren, Aluminiumrahmen <br> - Steuerung: Raspberry Pi 5 + ESP32 (MicroPython) <br> - Geplant: Kamerabasierte Hinderniserkennung, relative Positionsbestimmung (Encoder + IMU), Zielnavigation via Beacon/Koordinaten <br> - Eigenständige Konstruktion und Fertigung ab Rohmaterial (Elektrik in Bearbeitung) <br> - Geplant als Grundlage für Bachelorarbeit",
+          "excerpt": "- Autonomous cargo transport robot <br> - Track drive with industrial motors, aluminum frame <br> - Control: Raspberry Pi 5 + ESP32 (MicroPython) <br> - Planned: Camera-based obstacle detection, relative positioning (encoder + IMU), target navigation via beacon/coordinates <br> - Independent design and manufacturing from raw materials (electrics in progress) <br> - Planned as the basis for the bachelor's thesis",
           "tags": [],
           "href": "#"
         },
         {
           "date": "2025",
-          "title": "Gamifizierte Fitness-App (Teamprojekt, Seminar)",
-          "excerpt": "- Auftraggeber: The Sphere Fitnessstudio, Darmstadt <br> - Implementierung des Firebase-Authentifizierungssystems und der App-Oberfläche (HTML, CSS, JavaScript) <br> - Hosting via Netlify",
+          "title": "Gamified Fitness App (Team Project, Seminar)",
+          "excerpt": "- Client: The Sphere Fitness Studio, Darmstadt <br> - Implementation of the Firebase authentication system and app interface (HTML, CSS, JavaScript) <br> - Hosting via Netlify",
           "tags": [],
           "href": "https://github.com/SeriousGame-13/WebApp"
         },
         {
           "date": "2026",
-          "title": "TransVisEd (Teamprojekt, Bachelor-Praktikum)",
-          "excerpt": "- Multiuser-Transkripteditor <br> - Entwickelt für das Multimodal Digital Oral History-Projekt des International Digital Oral History Lab, Institut für Geschichte, TU Darmstadt <br> - Einsatz als Kerninfrastruktur des MDOH-Projekts <br> - Implementierung des Authentifizierungssystems (Firebase + SQL) <br> - Entwicklung der Kommunikationsschicht zwischen Backend, Frontend und Datenbank (PHP)",
+          "title": "TransVisEd (Team Project, Bachelor Practical)",
+          "excerpt": "- Multi-user transcript editor <br> - Developed for the Multimodal Digital Oral History project of the International Digital Oral History Lab, Institute of History, TU Darmstadt <br> - Used as core infrastructure of the MDOH project <br> - Implementation of the authentication system (Firebase + SQL) <br> - Development of the communication layer between backend, frontend, and database (PHP)",
           "tags": [],
           "href": "https://hiddenhistories.net/s/MDOH/page/home"
         }
@@ -85,41 +86,41 @@
     },
     {
       "type": "timeline",
-      "label": "KENNTNISSE",
+      "label": "SKILLS",
       "items": [
         {
           "period": "",
-          "role": "Sprachen",
-          "org": "Sprachen",
-          "desc": "Koreanisch – Muttersprache <br> Deutsch – Fließend (seit 2011) <br> Englisch – B2 <br>Spanisch – Grundkenntnisse",
+          "role": "Languages",
+          "org": "Languages",
+          "desc": "Korean – Native language <br> German – Fluent (since 2011) <br> English – B2 <br> Spanish – Basic knowledge",
           "tags": []
         },
         {
           "period": "",
-          "role": "Programmiersprachen",
-          "org": "Programmiersprachen",
-          "desc": "Python (inkl. MicroPython) – Gute Kenntnisse <br> HTML/CSS/JS – Grundkenntnisse <br> Java – Grundkenntnisse <br> C++ – Grundkenntnisse",
+          "role": "Programming Languages",
+          "org": "Programming Languages",
+          "desc": "Python (incl. MicroPython) – Proficient <br> HTML/CSS/JS – Basic knowledge <br> Java – Basic knowledge <br> C++ – Basic knowledge",
           "tags": []
         },
         {
           "period": "",
           "role": "Tools",
           "org": "Tools",
-          "desc": "Git – Grundkenntnisse <br> Fusion 360 (CAD) - Gute Kenntnisse",
+          "desc": "Git – Basic knowledge <br> Fusion 360 (CAD) – Proficient",
           "tags": []
         },
         {
           "period": "",
           "role": "Hardware / Embedded",
           "org": "Hardware / Embedded",
-          "desc": "ESP32, Raspberry Pi – Gute Kenntnisse",
+          "desc": "ESP32, Raspberry Pi – Proficient",
           "tags": []
         },
         {
           "period": "",
-          "role": "Sonstiges",
-          "org": "Sonstiges",
-          "desc": "Mechanische Fertigung – Gute Kenntnisse <br> Führerschein Klasse B",
+          "role": "Other",
+          "org": "Other",
+          "desc": "Mechanical manufacturing – Proficient <br> Driver's license Class B",
           "tags": []
         }
       ]
