@@ -1,0 +1,128 @@
+{
+  "tag": "// Profile",
+  "name": "Lebenslauf",
+  "desc": "Curriculum Vitae, 21.03.2026",
+  "sections": [
+    {
+      "type": "timeline",
+      "label": "AUSBILDUNG",
+      "items": [
+        {
+          "period": "2013 — 2019",
+          "role": "Gesamtschule Gießen Ost",
+          "org": "Gesamtschule",
+          "desc": "2016 - Mittlere Reife (Realschulabschluss) <br> 2019 - Allgemeine Hochschulreife (Abitur)",
+          "tags": []
+        },
+        {
+          "period": "2019 — 2020",
+          "role": "Technische Universität Darmstadt",
+          "org": "Technische Universität",
+          "desc": "- Maschinenbau (B.Sc.)",
+          "tags": []
+        },
+        {
+          "period": "2020 — Jetzt",
+          "role": "Technische Universität Darmstadt",
+          "org": "Technische Universität",
+          "desc": "- Informatik (B.Sc.) (Fachwechsel) <br> - Unterbrechung durch Militärdienst",
+          "tags": []
+        }
+      ]
+    },{
+      "type": "timeline",
+      "label": "MILITÄRDIENST",
+      "items": [
+        {
+          "period": "2021 — 2023",
+          "role": "Republik Korea – Militärdienst",
+          "org": "MILITÄRDIENST",
+          "desc": "- Bedienung und Verwaltung optoelektronischer Überwachungssysteme (TOD) <br> - inkl. COVID-19-bedingter Verzögerungen",
+          "tags": []
+        }
+      ]
+    },
+    {
+      "type": "posts",
+      "label": "PROJEKTE",
+      "items": [
+        {
+          "date": "2023 – 2025",
+          "title": "Raidian I",
+          "excerpt": "- Entwicklung eines selbstbalancierenden Zweiradroboters <br> - Gleichgewichtsregelung via MPU6050-Sensor und PID-Steuerung <br> - Steuerung: Raspberry Pi 5 + ESP32 (MicroPython) <br> - Eigenständige Konstruktion und Fertigung ab Rohmaterial <br> - Projekt abgeschlossen. Gewonnene Erkenntnisse fließen in Raidian II ein",
+          "tags": [],
+          "href": "https://github.com/Namenashi/Raidian_I"
+        },
+        {
+          "date": "2024",
+          "title": "Veritas Encryptor (Python, Open Source)",
+          "excerpt": "- Datei-Verschlüsselungssoftware mit sequenziellem <br> Dual-Verschlüsselungsverfahren (ChaCha20-Poly1305 + AES-GCM) <br> - Schlüsselableitung via Argon2id + HKDF <br> - Plattformübergreifend (Windows / Linux)",
+          "tags": [],
+          "href": "https://github.com/Namenashi/File_Encryptor"
+        },
+        {
+          "date": "2025 – laufend",
+          "title": "Raidian II",
+          "excerpt": "- Autonomer Lastentransportroboter <br> - Kettenantrieb mit Industriemotoren, Aluminiumrahmen <br> - Steuerung: Raspberry Pi 5 + ESP32 (MicroPython) <br> - Geplant: Kamerabasierte Hinderniserkennung, relative Positionsbestimmung (Encoder + IMU), Zielnavigation via Beacon/Koordinaten <br> - Eigenständige Konstruktion und Fertigung ab Rohmaterial (Elektrik in Bearbeitung) <br> - Geplant als Grundlage für Bachelorarbeit",
+          "tags": [],
+          "href": "#"
+        },
+        {
+          "date": "2025",
+          "title": "Gamifizierte Fitness-App (Teamprojekt, Seminar)",
+          "excerpt": "- Auftraggeber: The Sphere Fitnessstudio, Darmstadt <br> - Implementierung des Firebase-Authentifizierungssystems und der App-Oberfläche (HTML, CSS, JavaScript) <br> - Hosting via Netlify",
+          "tags": [],
+          "href": "https://github.com/SeriousGame-13/WebApp"
+        },
+        {
+          "date": "2026",
+          "title": "TransVisEd (Teamprojekt, Bachelor-Praktikum)",
+          "excerpt": "- Multiuser-Transkripteditor <br> - Entwickelt für das Multimodal Digital Oral History-Projekt des International Digital Oral History Lab, Institut für Geschichte, TU Darmstadt <br> - Einsatz als Kerninfrastruktur des MDOH-Projekts <br> - Implementierung des Authentifizierungssystems (Firebase + SQL) <br> - Entwicklung der Kommunikationsschicht zwischen Backend, Frontend und Datenbank (PHP)",
+          "tags": [],
+          "href": "https://hiddenhistories.net/s/MDOH/page/home"
+        }
+      ]
+    },
+    {
+      "type": "timeline",
+      "label": "KENNTNISSE",
+      "items": [
+        {
+          "period": "",
+          "role": "Sprachen",
+          "org": "Sprachen",
+          "desc": "Koreanisch – Muttersprache <br> Deutsch – Fließend (seit 2011) <br> Englisch – B2 <br>Spanisch – Grundkenntnisse",
+          "tags": []
+        },
+        {
+          "period": "",
+          "role": "Programmiersprachen",
+          "org": "Programmiersprachen",
+          "desc": "Python (inkl. MicroPython) – Gute Kenntnisse <br> HTML/CSS/JS – Grundkenntnisse <br> Java – Grundkenntnisse <br> C++ – Grundkenntnisse",
+          "tags": []
+        },
+        {
+          "period": "",
+          "role": "Tools",
+          "org": "Tools",
+          "desc": "Git – Grundkenntnisse <br> Fusion 360 (CAD) - Gute Kenntnisse",
+          "tags": []
+        },
+        {
+          "period": "",
+          "role": "Hardware / Embedded",
+          "org": "Hardware / Embedded",
+          "desc": "ESP32, Raspberry Pi – Gute Kenntnisse",
+          "tags": []
+        },
+        {
+          "period": "",
+          "role": "Sonstiges",
+          "org": "Sonstiges",
+          "desc": "Mechanische Fertigung – Gute Kenntnisse <br> Führerschein Klasse B",
+          "tags": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+[
+  {
+    "id": "home",
+    "label": "Home",
+    "href": "index.html"
+  },
+  {
+    "id": "alpha",
+    "label": "Project Alpha",
+    "href": "project.html?id=alpha"
+  },
+  {
+    "id": "beta",
+    "label": "Project Beta",
+    "href": "project.html?id=beta"
+  },
+  {
+    "id": "gamma",
+    "label": "Project Gamma",
+    "href": "project.html?id=gamma"
+  }
+]

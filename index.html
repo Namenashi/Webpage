@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+
+    .index-body {
+      padding-top: var(--nav-h);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* =============================================
+       HERO
+    ============================================= */
+    .index-hero {
+      position: relative;
+      min-height: calc(100vh - var(--nav-h));
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-bg-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .hero-bg-image {
+      position: absolute;
+      bottom: 0;
+      right: -15vw;
+      bottom: -5vw;
+      width: 90vw;        /* 원하는 크기로 조절 */
+      height: auto;
+      z-index: 0;         /* 가장 뒤 */
+      pointer-events: none;
+      object-fit: contain;
+      object-position: bottom right;
+    }
+
+    .hero-grid-overlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    .viewport-cross {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      pointer-events: none;
+      z-index: 3;
+    }
+    .viewport-cross::before,
+    .viewport-cross::after {
+      content: '';
+      position: absolute;
+      background: rgba(255,255,255,0.25);
+    }
+    .viewport-cross::before { width: 2px; height: 100%; left: 50%; top: 0; transform: translateX(-50%); }
+    .viewport-cross::after  { height: 2px; width: 100%; top: 50%; left: 0; transform: translateY(-50%); }
+
+    .viewport-cross.tl { top: 20px;    left: 20px; }
+    .viewport-cross.tr { top: 20px;    right: 20px; }
+    .viewport-cross.bl { bottom: 20px; left: 20px; }
+    .viewport-cross.br { bottom: 20px; right: 20px; }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      text-align: center;
+    }
+
+    .hero-logo {
+      position: absolute;
+      bottom: calc(100% + 24px);
+      left: 50%;
+      transform: translateX(-50%);
+      width: 15vw;
+      height: auto;
+    }
+
+    .hero-logo svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .hero-title-svg {
+      width: 25vw;
+      height: auto;
+    }
+
+    .hero-divider { width: 48px; height: 1px; background: var(--border); }
+    .hero-sub {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--text-secondary);
+    }
+
+  </style>
+</head>
+<body>
+
+  <div id="header-mount"></div>
+
+  <div class="index-body">
+
+    <!-- ===================== HERO ===================== -->
+    <section class="index-hero">
+
+      <svg class="hero-bg-svg" id="heroBg"
+           viewBox="0 0 100 100" preserveAspectRatio="none"
+           xmlns="http://www.w3.org/2000/svg">
+        <!-- 바들은 JS가 동적으로 생성 -->
+        <g id="barGroup"></g>
+      </svg>
+
+      <img class="hero-bg-image" src="Photo/img.png" alt="">
+
+      <div class="hero-grid-overlay"></div>
+
+      <svg style="position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none;"
+          viewBox="0 0 100 100" preserveAspectRatio="none"
+          xmlns="http://www.w3.org/2000/svg">
+        <polygon id="shapeBar" fill="#F0C400"/>
+      </svg>
+
+      <div class="viewport-cross tl"></div>
+      <div class="viewport-cross tr"></div>
+      <div class="viewport-cross bl"></div>
+      <div class="viewport-cross br"></div>
+
+      <div class="hero-content">
+        <!-- 아이콘 로고 — JS가 COLOR_HERO_ICON 색상으로 렌더링 -->
+        <div class="hero-logo" id="heroLogo"></div>
+
+        <!-- 팀 타이틀 SVG — JS가 COLOR_HERO_TITLE 색상으로 렌더링 -->
+        <div class="hero-title-svg" id="heroTitleSvg"></div>
+
+        <div class="hero-divider"></div>
+        <div class="hero-sub">Projects &amp; Works</div>
+      </div>
+
+    </section>
+  </div>
+
+  <div id="footer-mount"></div>
+
+  <script src="js/components.js"></script>
+  <script>
+    async function initIndexPage() {
+      await renderHeader('home');
+      renderFooter();
+
+      let navItems = [];
+      try {
+        const res = await fetch('data/nav.json');
+        navItems = await res.json();
+      } catch (e) {
+        console.warn('nav.json 로드 실패', e);
+        return;
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', initIndexPage);
+  </script>
+
+  <!-- Hero 배경 애니메이션 -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+      // ── 히어로 색상 변수 — 여기만 바꾸면 됨 ──────────
+      const COLOR_HERO_ICON  = '#F0C400';  // 히어로 아이콘 색상
+      const COLOR_HERO_TITLE = '#F0C400';  // 히어로 타이틀 색상
+      // ────────────────────────────────────────────────
+
+      // 히어로 아이콘 & 타이틀 렌더링 (components.js의 함수 사용)
+      document.getElementById('heroLogo').innerHTML =
+        iconSvg(COLOR_HERO_ICON, '100%', '100%');
+      document.getElementById('heroTitleSvg').innerHTML =
+        titleSvg(COLOR_HERO_TITLE, '100%');
+      const BAR_COUNT   = 20;
+
+      const BAR_COLORS  = [
+        '#2A2A28'
+      ];
+
+      const BAR_DURATIONS = [
+        7, 10, 9, 11, 11, 6, 7, 10, 7, 9, 11, 8, 8, 7, 9, 10, 6, 9, 9, 7
+      ];
+
+      const BAR_H = 100 / BAR_COUNT;
+
+      const barYellow = { duration: 11 };
+      // ────────────────────────────────────────────────
+
+      function ease(t) { return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); }
+
+      const barGroup = document.getElementById('barGroup');
+
+      for (let i = 0; i < BAR_COUNT; i++) {
+        const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        rect.setAttribute('x',      '100');
+        rect.setAttribute('y',      String(i * BAR_H));
+        rect.setAttribute('width',  '100');
+        rect.setAttribute('height', String(BAR_H + 0.1));
+        rect.setAttribute('fill',   BAR_COLORS[i % BAR_COLORS.length]);
+        barGroup.appendChild(rect);
+
+        const duration = BAR_DURATIONS[i] ?? 0.8;
+
+        ;(function(el, dur) {
+          const start = performance.now();
+          function frame(now) {
+            const p = Math.min((now - start) / (dur * 1000), 1);
+            el.setAttribute('x', String(100 - 100 * ease(p)));
+            if (p < 1) requestAnimationFrame(frame);
+          }
+          requestAnimationFrame(frame);
+        })(rect, duration);
+      }
+
+      // ── 노란 가로 바 ──
+      const shapeBar = document.getElementById('shapeBar');
+      const hero     = document.querySelector('.index-hero');
+      const subEl    = document.querySelector('.hero-sub');
+
+      const heroRect     = hero.getBoundingClientRect();
+      const subRect      = subEl.getBoundingClientRect();
+      const subCenterY   = (subRect.top - heroRect.top + subRect.height / 2) / heroRect.height * 100;
+      const barThickness = 1.8;
+      const yTop         = subCenterY - barThickness / 2;
+      const yBot         = subCenterY + barThickness / 2;
+
+      ;(function() {
+        const start = performance.now();
+        const dur   = barYellow.duration * 1000;
+        function frame(now) {
+          const p     = Math.min((now - start) / dur, 1);
+          const right = 100 * ease(p);
+          shapeBar.setAttribute('points',
+            `0,${yTop} ${right},${yTop} ${right},${yBot} 0,${yBot}`);
+          if (p < 1) requestAnimationFrame(frame);
+        }
+        requestAnimationFrame(frame);
+      })();
+
+    });
+  </script>
+
+</body>
+</html>

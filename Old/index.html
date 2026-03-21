@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+
+    .index-body {
+      padding-top: var(--nav-h);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* =============================================
+       HERO
+    ============================================= */
+    .index-hero {
+      position: relative;
+      min-height: calc(100vh - var(--nav-h));
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-bg-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .hero-grid-overlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    .viewport-cross {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      pointer-events: none;
+      z-index: 3;
+    }
+    .viewport-cross::before,
+    .viewport-cross::after {
+      content: '';
+      position: absolute;
+      background: rgba(255,255,255,0.25);
+    }
+    .viewport-cross::before { width: 2px; height: 100%; left: 50%; top: 0; transform: translateX(-50%); }
+    .viewport-cross::after  { height: 2px; width: 100%; top: 50%; left: 0; transform: translateY(-50%); }
+
+    .viewport-cross.tl { top: 20px;    left: 20px; }
+    .viewport-cross.tr { top: 20px;    right: 20px; }
+    .viewport-cross.bl { bottom: 20px; left: 20px; }
+    .viewport-cross.br { bottom: 20px; right: 20px; }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+      text-align: center;
+    }
+
+    .hero-logo {
+      position: absolute;
+      bottom: calc(100% + 24px);
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .hero-logo svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .hero-label {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(64px, 10vw, 140px);
+      letter-spacing: 6px;
+      line-height: 0.92;
+      color: var(--text-primary);
+    }
+
+    .hero-title .accent-line { color: var(--accent); }
+    .hero-divider { width: 48px; height: 1px; background: var(--border); }
+    .hero-sub {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--text-secondary);
+    }
+
+  </style>
+</head>
+<body>
+
+  <div id="header-mount"></div>
+
+  <div class="index-body">
+
+    <!-- ===================== HERO ===================== -->
+    <section class="index-hero">
+
+      <svg class="hero-bg-svg" id="heroBg"
+           viewBox="0 0 100 100" preserveAspectRatio="none"
+           xmlns="http://www.w3.org/2000/svg">
+        <!-- 바들은 JS가 동적으로 생성 -->
+        <g id="barGroup"></g>
+        <polygon id="shapeBar" fill="#F0C400"/>
+      </svg>
+
+      <div class="hero-grid-overlay"></div>
+
+      <div class="viewport-cross tl"></div>
+      <div class="viewport-cross tr"></div>
+      <div class="viewport-cross bl"></div>
+      <div class="viewport-cross br"></div>
+
+      <div class="hero-content">
+        <div class="hero-logo">
+          <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="30" cy="30" r="28" fill="var(--accent)" opacity="0.2"/>
+            <circle cx="30" cy="30" r="18" fill="var(--accent)"/>
+          </svg>
+        </div>
+
+        <div class="hero-label">// Development Department //</div>
+        <div class="hero-title"><span class="accent-line">VERITAS</span></div>
+        <div class="hero-divider"></div>
+        <div class="hero-sub">Projects &amp; Works</div>
+      </div>
+
+    </section>
+  </div>
+
+  <div id="footer-mount"></div>
+
+  <script src="js/components.js"></script>
+  <script>
+    async function initIndexPage() {
+      await renderHeader('home');
+      renderFooter();
+    }
+    document.addEventListener('DOMContentLoaded', initIndexPage);
+  </script>
+
+  <!-- Hero 배경 애니메이션 -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+      // ── 파라미터 ────────────────────────────────────
+      const BAR_COUNT   = 20;       // 바 개수 (여기만 바꾸면 됨)
+
+      // 각 바의 색상 — BAR_COUNT보다 적으면 순환됨
+      const BAR_COLORS  = [
+        '#2A2A28'
+      ];
+
+      // 각 바의 duration(초) — 빠른~느린 속도를 섞음
+      const BAR_DURATIONS = [
+        7,   // 바 0
+        10,   // 바 1
+        9,  // 바 2
+        11,   // 바 3
+        11,   // 바 4
+        6,   // 바 5
+        7,  // 바 6
+        10,
+        7,
+        9,
+        11,
+        8,
+        8,
+        7,
+        9,
+        10,
+        6,
+        9,
+        9,
+        7
+      ];
+
+      const BAR_H = 100 / BAR_COUNT;  // 각 바의 높이 (viewBox 기준 %)
+
+      // 노란 바 파라미터
+      const barYellow = { duration: 11 };
+      // ────────────────────────────────────────────────
+
+      function ease(t) { return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); }
+
+      // ── 가로 바 생성 & 애니메이션 ──
+      const barGroup = document.getElementById('barGroup');
+
+      for (let i = 0; i < BAR_COUNT; i++) {
+        const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        rect.setAttribute('x',      '100');
+        rect.setAttribute('y',      String(i * BAR_H));
+        rect.setAttribute('width',  '100');
+        rect.setAttribute('height', String(BAR_H + 0.1)); // 틈새 방지
+        rect.setAttribute('fill',   BAR_COLORS[i % BAR_COLORS.length]);
+        barGroup.appendChild(rect);
+
+        const duration = BAR_DURATIONS[i] ?? 0.8;
+
+        ;(function(el, dur) {
+          const start = performance.now();
+          function frame(now) {
+            const p = Math.min((now - start) / (dur * 1000), 1);
+            el.setAttribute('x', String(100 - 100 * ease(p)));
+            if (p < 1) requestAnimationFrame(frame);
+          }
+          requestAnimationFrame(frame);
+        })(rect, duration);
+      }
+
+      // ── 노란 가로 바 ──
+      const shapeBar = document.getElementById('shapeBar');
+      const hero     = document.querySelector('.index-hero');
+      const subEl    = document.querySelector('.hero-sub');
+
+      const heroRect = hero.getBoundingClientRect();
+      const subRect  = subEl.getBoundingClientRect();
+      const subCenterY   = (subRect.top - heroRect.top + subRect.height / 2) / heroRect.height * 100;
+      const barThickness = 1.8;
+      const yTop         = subCenterY - barThickness / 2;
+      const yBot         = subCenterY + barThickness / 2;
+
+      ;(function() {
+        const start = performance.now();
+        const dur   = barYellow.duration * 1000;
+        function frame(now) {
+          const p     = Math.min((now - start) / dur, 1);
+          const right = 100 * ease(p);
+          shapeBar.setAttribute('points',
+            `0,${yTop} ${right},${yTop} ${right},${yBot} 0,${yBot}`);
+          if (p < 1) requestAnimationFrame(frame);
+        }
+        requestAnimationFrame(frame);
+      })();
+
+      // ── 로고 박스 크기 ──
+      const titleEl = document.querySelector('.hero-title');
+      const logoEl  = document.querySelector('.hero-logo');
+      function resizeLogo() {
+        const size = titleEl.getBoundingClientRect().width * 0.9;
+        logoEl.style.width  = size + 'px';
+        logoEl.style.height = size + 'px';
+      }
+      resizeLogo();
+      window.addEventListener('resize', resizeLogo);
+    });
+  </script>
+
+</body>
+</html>

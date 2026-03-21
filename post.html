@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+
+    .post-body {
+      padding-top: var(--nav-h);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* =============================================
+       HERO
+    ============================================= */
+    .post-hero {
+      background: var(--bg-dark);
+      padding: 80px 0 64px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .post-hero-grid {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    .viewport-cross {
+      position: absolute; width: 20px; height: 20px; pointer-events: none; z-index: 3;
+    }
+    .viewport-cross::before, .viewport-cross::after {
+      content: ''; position: absolute; background: rgba(255,255,255,0.2);
+    }
+    .viewport-cross::before { width: 2px; height: 100%; left: 50%; top: 0; transform: translateX(-50%); }
+    .viewport-cross::after  { height: 2px; width: 100%; top: 50%; left: 0; transform: translateY(-50%); }
+    .viewport-cross.tl { top: 20px; left: 20px; }
+    .viewport-cross.tr { top: 20px; right: 20px; }
+    .viewport-cross.bl { bottom: 20px; left: 20px; }
+    .viewport-cross.br { bottom: 20px; right: 20px; }
+
+    .post-hero-inner {
+      max-width: 900px; margin: 0 auto; padding: 0 60px;
+      position: relative; z-index: 2;
+    }
+
+    .post-hero-tag {
+      font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.3em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 20px; display: flex; align-items: center; gap: 10px;
+    }
+    .post-hero-tag::before { content: ''; width: 24px; height: 1px; background: var(--accent); }
+
+    .post-hero-name {
+      font-family: var(--font-display);
+      font-size: clamp(64px, 8vw, 110px);
+      line-height: 0.9; letter-spacing: 3px;
+      color: #F0EFEB; margin-bottom: 32px;
+    }
+    .post-hero-name .accent { color: var(--accent); }
+
+    .post-hero-desc {
+      font-family: var(--font-body); font-size: 13px; font-weight: 300;
+      line-height: 1.9; color: rgba(255,255,255,0.45); max-width: 560px;
+    }
+
+    .post-accent-bar { height: 3px; background: var(--accent); }
+
+    /* =============================================
+       CONTENT
+    ============================================= */
+    .post-content {
+      flex: 1;
+      max-width: 900px; margin: 0 auto; padding: 80px 60px;
+      width: 100%;
+    }
+
+    .post-section { margin-bottom: 72px; }
+
+    .post-section-head {
+      display: flex; align-items: center; gap: 16px; margin-bottom: 40px;
+    }
+    .post-section-num {
+      font-family: var(--font-display); font-size: 13px;
+      color: var(--accent); letter-spacing: 2px;
+    }
+    .post-section-line { flex: 1; height: 1px; background: var(--accent); }
+    .post-section-label {
+      font-family: var(--font-mono); font-size: 9px;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted);
+    }
+
+    .accent { color: var(--accent); }
+
+    /* TIMELINE */
+    .timeline-item {
+      display: grid; grid-template-columns: 140px 1fr; gap: 40px;
+    }
+    .timeline-item + .timeline-item {
+      border-top: 1px solid var(--border); padding-top: 32px; margin-top: 32px;
+    }
+    .timeline-period {
+      font-family: var(--font-mono); font-size: 9px;
+      letter-spacing: 0.1em; color: var(--text-muted);
+      padding-top: 5px; line-height: 1.8;
+    }
+    .timeline-role {
+      font-family: var(--font-display); font-size: 24px;
+      letter-spacing: 2px; color: var(--text-primary); margin-bottom: 4px;
+    }
+    .timeline-org {
+      font-family: var(--font-mono); font-size: 10px;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 14px;
+    }
+    .timeline-desc {
+      font-family: var(--font-body); font-size: 13px;
+      font-weight: 300; line-height: 1.9; color: var(--text-secondary);
+    }
+    .timeline-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 14px; }
+
+    /* POST LIST */
+    .post-list-item {
+      padding: 28px 0; border-bottom: 1px solid var(--border);
+      display: grid; grid-template-columns: 110px 1fr 24px;
+      gap: 28px; align-items: start;
+      cursor: pointer; transition: all 0.15s; text-decoration: none; color: inherit;
+      display: grid;
+    }
+    .post-list-item:first-of-type { border-top: 1px solid var(--border); }
+    .post-list-item:hover { background: var(--panel-bg); padding: 28px 20px; margin: 0 -20px; }
+    .post-list-date {
+      font-family: var(--font-mono); font-size: 9px;
+      letter-spacing: 0.1em; color: var(--text-muted); padding-top: 5px;
+    }
+    .post-list-title {
+      font-family: var(--font-display); font-size: 20px;
+      letter-spacing: 2px; color: var(--text-primary);
+      margin-bottom: 8px; line-height: 1.1;
+    }
+    .post-list-excerpt {
+      font-family: var(--font-body); font-size: 12px;
+      font-weight: 300; line-height: 1.85; color: var(--text-secondary);
+    }
+    .post-list-arrow {
+      font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);
+      opacity: 0; transition: opacity 0.15s, transform 0.15s;
+      transform: translateX(-6px); padding-top: 4px;
+    }
+    .post-list-item:hover .post-list-arrow { opacity: 1; transform: translateX(0); }
+
+  </style>
+</head>
+<body>
+
+  <div id="header-mount"></div>
+
+  <div class="post-body">
+    <div class="post-hero" id="postHero">
+      <div class="post-hero-grid"></div>
+      <div class="viewport-cross tl"></div>
+      <div class="viewport-cross tr"></div>
+      <div class="viewport-cross bl"></div>
+      <div class="viewport-cross br"></div>
+      <div class="post-hero-inner">
+        <div class="post-hero-tag" id="postTag">// Profile</div>
+        <div class="post-hero-name" id="postName">—</div>
+        <p class="post-hero-desc" id="postDesc">—</p>
+      </div>
+    </div>
+    <div class="post-accent-bar"></div>
+
+    <div class="post-content" id="postContent"></div>
+  </div>
+
+  <div id="footer-mount"></div>
+
+  <script src="js/components.js"></script>
+  <script src="js/post.js"></script>
+
+</body>
+</html>
