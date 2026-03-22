@@ -8,7 +8,7 @@
   "index": "02",
   "description": {
     "title": "RAIDIAN II\nDEVELOPMENT LOG",
-    "tags": ["Autonomous navigation", "Camera-based object detection", "Simple SLAM (Simultaneous Localization and Mapping)", "Autonomous cargo robot"],
+    "tags": ["Autonomous cargo robot"],
     "text": "Raidian II aims to be an open-source, locally operated robot capable of functioning as a partner in the user's daily life. The robot will perceive and map its surroundings through a camera, and based on that map, it will derive a safe route toward the user's relative coordinates — estimated via beacon signals — to autonomously track and follow the user. The goal is for the robot to operate without issues across all terrain types a user might encounter in daily life: indoors, outdoors, forest paths, snow, and ice. A target of 3+ hours of continuous outdoor operation is set. <br> The robot will be driven by two BLDC motors and will use multiple ESP32s and a Raspberry Pi 5 for control. The robot's position will be estimated by combining wheel encoder readings with IMU correction. The main frame, directly connected to both tracks, will use 7075-T6 aluminium, with AlMgSi0.5 used for all other structural components.",
     "specs": [
       { "key": "Controller", "val": "ESP32, Raspberry Pi 5" },
